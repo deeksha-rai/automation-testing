@@ -1,0 +1,24 @@
+package walletHubReviewCheck;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class HoverOverStars {
+	public static void hoveronstars() throws Exception
+	{
+		Thread.sleep(5000);
+		CommonMeths.handlinghoverwithoutclick("stars");
+		CommonMeths.handlinghoverwithoutclick("third");
+		System.out.println("Stars getting lit up");
+		Thread.sleep(6000);
+		CommonMeths.handlingmousehoveringwithClick("fifth");
+		
+		
+		
+		
+		
+		
+	}
+}

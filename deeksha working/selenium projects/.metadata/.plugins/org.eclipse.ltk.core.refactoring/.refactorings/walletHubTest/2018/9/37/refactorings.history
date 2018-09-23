@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;walletHubReviewCheck.OpenBrowser&apos; to &apos;BrowserSelection&apos;&#x0D;&#x0A;- Original project: &apos;walletHubTest&apos;&#x0D;&#x0A;- Original element: &apos;walletHubReviewCheck.OpenBrowser&apos;&#x0D;&#x0A;- Renamed element: &apos;walletHubReviewCheck.BrowserSelection&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;OpenBrowser&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;walletHubReviewCheck{OpenBrowser.java[OpenBrowser" matchStrategy="1" name="BrowserSelection" qualified="false" references="true" similarDeclarations="false" stamp="1536995589987" textual="false" version="1.0"/>
+</session>

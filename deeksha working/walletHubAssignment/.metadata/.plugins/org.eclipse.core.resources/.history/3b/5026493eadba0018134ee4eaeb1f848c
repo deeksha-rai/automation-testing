@@ -1,0 +1,51 @@
+package FBuserInput.FBuserInput;
+
+import java.util.Scanner;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class OpenBrowser {
+	static WebDriver driver;
+	public static void login()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Provide username and password that you will enter");
+		String username=sc.nextLine();
+		String Pass=sc.nextLine();
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver2.37\\chromedriver.exe");
+		driver=new ChromeDriver();
+		driver.get("https://www.facebook.com/");
+		driver.findElement(By.id("email")).sendKeys(username);
+		driver.findElement(By.id("pass")).sendKeys(Pass);
+		driver.findElement(By.id("loginbutton")).click();
+	    sc.close();
+	}
+	
+	public static void postStatus()
+	{
+		Alert at=driver.switchTo().alert();
+		at.accept();
+		WebElement statusclk=driver.findElement(By.id("js_6n"));
+		WebDriverWait wt=new WebDriverWait(driver,20);
+		wt.until(ExpectedConditions.elementToBeClickable(statusclk));
+		statusclk.click();
+		WebElement statuswrite=driver.findElement(By.id("placeholder-7nl7g"));
+		statuswrite.sendKeys("Hello World");
+		driver.findElement(By.xpath("//*[@id=\"js_bo\"]/div[2]/div[3]/div[2]/div/div/span/button"));
+		
+	}
+	public static void main(String args[]) 
+	{
+		OpenBrowser.login();
+		OpenBrowser.postStatus();
+		
+}
+	}
+

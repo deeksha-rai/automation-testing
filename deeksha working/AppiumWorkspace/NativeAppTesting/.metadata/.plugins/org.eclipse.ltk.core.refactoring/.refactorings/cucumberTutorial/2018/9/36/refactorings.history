@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;dailyroutine.feature&apos; to &apos;cucumberTutorial/src/stepdefinitionfile&apos;&#x0D;&#x0A;- Original project: &apos;cucumberTutorial&apos;&#x0D;&#x0A;- Destination element: &apos;cucumberTutorial/src/stepdefinitionfile&apos;&#x0D;&#x0A;- Original element: &apos;dailyroutine.feature&apos;" description="Copy file" destination="/src&lt;stepdefinitionfile" element1="src/featurefiles/dailyroutine.feature" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1536391576795" units="0" version="1.0"/>
+</session>

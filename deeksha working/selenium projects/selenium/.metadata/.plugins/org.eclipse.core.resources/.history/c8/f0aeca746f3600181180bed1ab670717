@@ -1,0 +1,33 @@
+package Vietnam;
+
+import org.openqa.selenium.WebDriver;
+
+
+public class BTMU_SANITY_India_MAIN {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+		CreateRem_ALL_BTMU_India rem = new CreateRem_ALL_BTMU_India();
+		Auth_Rem_india auth = new Auth_Rem_india();
+		rem.Create_REM();
+		WebDriver driver = auth.LogIn();	
+		
+		
+		auth.AuthRem(driver, rem.RemId1);
+	auth.AuthRem(driver, rem.RemId2);
+		auth.AuthRem(driver, rem.RemId3);
+		auth.AuthRem(driver, rem.RemId6);	
+		
+		WebDriver dr = auth.LogIn_ORder();
+		
+		auth.Auth_Order(dr, rem.RemId4);
+		auth.Auth_Order(dr, rem.RemId5);
+		auth.Auth_Order(dr, rem.RemId7);
+	
+			
+
+	}
+
+}

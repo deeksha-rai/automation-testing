@@ -1,0 +1,16 @@
+package pagesOfWebSite;
+
+import supportProviderUtilities.CommonMeths;
+
+public class HoverOverStars {
+	public static void hoveronstars() throws Exception
+	{
+//		Thread.sleep(5000);
+		CommonMeths.handlinghoverwithoutclick("stars");
+		CommonMeths.handlinghoverwithoutclick("third");
+		System.out.println("Stars getting lit up");
+		
+		CommonMeths.handlingmousehoveringwithClick("fifth");
+		
+	}
+}

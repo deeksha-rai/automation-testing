@@ -1,0 +1,17 @@
+package abc;
+
+import org.testng.annotations.Test;
+
+public class Listener {
+
+	@Test
+	public void loginwithEmail()
+	{
+		System.out.println("Inside login with email");
+	}
+	@Test
+	public void loginwithFB()
+	{
+		System.out.println("Inside login with FB");
+	}
+}

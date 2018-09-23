@@ -1,0 +1,54 @@
+package walletHubReviewCheck;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class HoverOverStars {
+	public static WebDriver driver=BrowserSelection.driver;
+	
+	public static void hoveronstars() throws Exception
+	{
+		Actions act=new Actions(driver);
+		Thread.sleep(5000);
+		WebElement stars=driver.findElement(By.xpath("//*[@id=\"wh-body-inner\"]/div[2]/div[3]/span"));
+		System.out.println(5);
+		act.moveToElement(stars).build().perform();
+		
+		//List <WebElement> rate =new ArrayList <WebElement>();
+		//String one="//div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][1]";
+//		String two="//div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][2]";
+//		String three="//div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][3]";
+		String four="//div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][4]";
+		String five="//div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][5]";
+		act.moveToElement(driver.findElement(By.xpath(four))).build().perform();
+		act.moveToElement(driver.findElement(By.xpath(five))).click().build().perform();
+//		rate.add(driver.findElement(By.xpath(one)));
+//		rate.add(driver.findElement(By.xpath(two)));
+//		rate.add(driver.findElement(By.xpath(three)));
+//		rate.add(driver.findElement(By.xpath(four)));
+//		rate.add(driver.findElement(By.xpath(five)));
+		
+//		for (WebElement s:rate)
+//		{
+//			act.moveToElement(s).build().perform();
+//			String str=s.getText();
+//			if(str.equalsIgnoreCase("Bad"))
+//				System.out.println("Only first star lit up:Rating is Bad");
+//			else if (str.equalsIgnoreCase("Below Average"))
+//				System.out.println("First two star lit up:Rating is Below Average");
+//			else if (str.equalsIgnoreCase("Average"))
+//				System.out.println("First three star lit up:Rating is Average");
+//			else if (str.equalsIgnoreCase("Excellent"))
+//				System.out.println("First four star lit up:Rating is Excellent");
+//			else
+//				System.out.println("Five stars lit up:Rating is good");
+//			
+//		}
+		
+	}
+}

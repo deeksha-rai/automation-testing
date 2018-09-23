@@ -1,0 +1,11 @@
+package walletHubReviewCheck;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		BrowserSelection bs=new BrowserSelection();
+		bs.OpenBrowser("chrome");
+
+	}
+
+}

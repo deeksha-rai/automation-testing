@@ -1,0 +1,22 @@
+package com.practice.framework;
+
+public class mainfunctionClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+		homePage.openBrowser();
+		homePage.signIn();
+		homePage.createAccount();
+		ReadWriteData.setxcelPath();
+		homePage.clickcreateAccount();
+		createAccountClass.provideDetail();
+		searchForTop.hoverOnWomen();
+		checkOut.checkOutDetail();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

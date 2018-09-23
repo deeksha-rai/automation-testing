@@ -1,0 +1,16 @@
+package com.mobileTesting;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class PreferencesPage {
+
+	
+	public static void clickOnPrefernces(AndroidDriver<AndroidElement> driver)
+	{
+		driver.findElementByAndroidUIAutomator("text(\"Preference\")").click();
+		List<AndroidElement> la=new ArrayList<AndroidElement>();
+	}
+}

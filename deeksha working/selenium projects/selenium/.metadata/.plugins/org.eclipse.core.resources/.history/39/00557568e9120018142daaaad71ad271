@@ -1,0 +1,32 @@
+package taiwan;
+import org.openqa.selenium.WebDriver;
+public class Main_gcms_upload {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+		Chromelogin BL = new Chromelogin();
+		
+	WebDriver WD1= BL.login_screen("renukatc","verma5");
+	FileRealease ba=new FileRealease();
+	
+   ba.fr(WD1);
+   Wizard wz= new Wizard();
+   wz.abc(WD1);
+   Auth_Order_summary or1= new Auth_Order_summary();
+   or1.osa(WD1);
+   wz.abc(WD1);
+   Ordermaster ct= new Ordermaster();
+   ct.ctod(WD1);
+   wz.abc(WD1);
+  Auth_workitem wd1= new Auth_workitem();
+wd1.wid1(WD1);
+    
+
+	}
+
+
+	}
+
+

@@ -1,0 +1,32 @@
+package com.mobileTesting;
+
+import java.util.List;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class PreferencesPage {
+
+	
+	public static void clickOnPrefernces(AndroidDriver<AndroidElement> driver)
+	{
+		driver.findElementByAndroidUIAutomator("text(\"Preference\")").click();
+	//List of elements present on Preferences Page
+		List<AndroidElement> la=driver.findElementsById("android:id/text1");
+		for(AndroidElement i:la)
+		{
+			System.out.println(i.getText());
+		}
+	}
+	public static void  WorkingOnPrefrencesXML(AndroidDriver<AndroidElement> driver)
+	{
+		driver.findElementByXPath("android.widget.TextView[@text='1. Preferences from XML']").click();
+		driver.findElementById("android:id/checkbox").click();
+		driver.findElementByXPath("android.widget.TextView[@text='Edit text preference']").click();
+		driver.findElementById("android:id/edit").sendKeys("Deeksha");
+		driver.findElementById("android:id/button1").click();
+		driver.findElementByXPath("android.widget.TextView[@text='List preference']").click();
+		driver.findElementByXPath("android.widget.TextView[@text='Beta Option 02']").click();
+	}
+	
+}

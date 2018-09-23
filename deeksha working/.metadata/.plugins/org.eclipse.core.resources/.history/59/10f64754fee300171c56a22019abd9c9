@@ -1,0 +1,39 @@
+package com.selenium.assignmentfour;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class VerifyCrossBrowser {
+
+	WebDriver driver;
+
+	public void invokeBrowser() {
+		try {
+			System.setProperty("webdriver.chrome.driver", "D:\\\\selenium\\\\chrome driver\\\\chromedriver.exe");
+			driver = new ChromeDriver();
+			driver.get("https://www.facebook.com/");
+			System.out.println(driver.getTitle());
+			String str=driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/div/div[1]/div/div")).getText();
+			System.out.println(str);
+			String freetouse=driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/div/div[2]/div[1]/div[2]")).getText();
+			System.out.println(freetouse);
+			
+		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		PageContext obj=new PageContext();
+		obj.invokeBrowser();
+	}
+
+}
+
+
+}

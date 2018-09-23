@@ -1,0 +1,27 @@
+package pagesOfWebSite;
+
+
+
+import static org.testng.AssertJUnit.assertEquals;
+
+import org.testng.annotations.Test;
+
+import supportProviderUtilities.CommonMeths;
+import supportProviderUtilities.ConstantsDeclared;
+
+public class VerifyReview {
+	@Test
+   public static void compareReviews()throws Exception
+	{
+		
+		CommonMeths.handlinghoverwithoutclick("profile");
+		CommonMeths.handlingClicks("selectprfl");
+		CommonMeths.handlingClicks("viewReview");
+		Thread.sleep(3000);
+		String opinion=CommonMeths.returnStringValue("compare");
+		assertEquals(ConstantsDeclared.review,opinion);
+			System.out.println("review done sucessfully");
+		
+			System.out.println("Review provided does not matches with the one entered by user");
+	}
+}

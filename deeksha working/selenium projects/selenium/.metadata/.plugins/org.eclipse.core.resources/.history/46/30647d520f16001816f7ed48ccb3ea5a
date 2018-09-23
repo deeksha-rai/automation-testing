@@ -1,0 +1,18 @@
+package taiwan;
+import org.openqa.selenium.WebDriver;
+public class Mainoutwardreturn {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Bancs_login BL = new Bancs_login();
+		WebDriver WD1 = BL.login_screen("RPSTaipei16","P@ssw0rd");
+		Outwardreturn ab = new Outwardreturn();
+		ab.Nackoutward(WD1);
+		WebDriver WD2 = BL.login_screen("RPSTaipei30","tcs@123");
+		Authotwardreturn abc= new Authotwardreturn();
+		abc.AuthNackoutward(WD2);
+		
+
+	}
+
+}

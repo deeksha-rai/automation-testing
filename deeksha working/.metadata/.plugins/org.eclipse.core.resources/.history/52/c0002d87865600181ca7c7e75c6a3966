@@ -1,0 +1,38 @@
+package com.udemy.appium;
+
+import java.net.MalformedURLException;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class UiAutomatorTest extends BaseClass {
+
+	public static void UiAutoTest() throws MalformedURLException
+	{
+		//syntax----driver.findElementByAndroidUIAutomator("(attribute(value))")
+		AndroidDriver<AndroidElement> driver=BaseClass.basemethod();
+		driver.findElementByAndroidUIAutomator("text(\"Views\")").click();
+		driver.findElementByAndroidUIAutomator("text(\"Animation\")").click();
+		
+		
+		//Validate clickable feature fro all options:
+		//Since clickable,focusable,editable etc are all properties and not attribute so they cannot be directly used
+		//To use them we have syntax as-- driver.findElementByAndroidUIAutomator("newUISelector().clickable(true)")
+		
+		System.out.println("Size of total clickable options is " + driver.findElementByAndroidUIAutomator("newUISelector().clickable(true)"));
+	}
+    public static void main(String args[])
+    {
+    	try {
+			UiAutomatorTest.UiAutoTest();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
+
+
+
+}
+

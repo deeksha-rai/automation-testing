@@ -1,0 +1,57 @@
+package FBuserInput.FBuserInput;
+
+import java.util.Scanner;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class OpenBrowser {
+	static WebDriver driver;
+	public static void login()
+	{
+//		Scanner sc=new Scanner(System.in);
+//		System.out.println("Provide username and password that you will enter");
+//		String username=sc.nextLine();
+//		String Pass=sc.nextLine();
+		ChromeOptions option=new ChromeOptions();
+		option.addArguments("--disable-notifications");
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver2.37\\chromedriver.exe");
+		driver=new ChromeDriver(option);
+		driver.get("https://www.facebook.com/");
+		driver.findElement(By.id("email")).sendKeys("glimpse.boon@gmail.com");
+		driver.findElement(By.id("pass")).sendKeys("Imfhry@de80");
+		driver.findElement(By.id("loginbutton")).click();
+//	    sc.close();
+	}
+	
+	public static void postStatus() throws InterruptedException
+	{
+		WebElement statusclk=driver.findElement(By.className("_1mwp navigationFocus _395 _1mwq _4c_p _5bu_ _34nd _21mu _5yk1"));
+//		WebDriverWait wt=new WebDriverWait(driver,20);
+//		wt.until(ExpectedConditions.elementToBeClickable(statusclk));
+		statusclk.click();
+		WebElement statuswrite=driver.findElement(By.xpath("//*[@id=\"js_4n\"]/div[1]/div/div[1]/div[2]/div/div/div/div"));
+		statuswrite.sendKeys("Hello World");
+		driver.findElement(By.xpath("//*[@id=\"js_bo\"]/div[2]/div[3]/div[2]/div/div/span/button"));
+		
+	}
+	public static void main(String args[]) 
+	{
+		OpenBrowser.login();
+		try {
+			OpenBrowser.postStatus();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+}
+	}
+

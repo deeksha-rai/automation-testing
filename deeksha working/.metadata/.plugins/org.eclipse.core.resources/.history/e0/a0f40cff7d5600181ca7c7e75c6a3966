@@ -1,0 +1,66 @@
+ package com.udemy.appium;
+
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.functions.ExpectedCondition;
+
+public class ClickOnPreferences extends BaseClass {
+
+	//Test Case 1- Click on Preference->Preference Dependencie->Check Wifi->click on wifi settings->enter text->ok
+	
+	public static void preferenceclick() throws MalformedURLException
+	{
+	AndroidDriver<AndroidElement>driver=basemethod();
+	
+	
+	//mostly used locators are id, xpath,class,uiAutomator
+	//syntax for xpath
+	/*    
+	 * 
+	 *  //tagname[@attribute='value']
+	 * 
+	 */
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	
+	
+	driver.findElementByXPath("//android.widget.TextView[@text='Preference']").click();
+	
+	//preference.click();
+	
+//   driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']").click();
+//	
+//       
+//      
+//    driver.findElementById("android:id/checkbox").click();
+//  	
+//      
+//      
+//      driver.findElementByXPath("//android.widget.RelativeLayout[2]").click();
+//    	
+//     
+//      
+//      driver.findElementByClassName("android.widget.EditText").sendKeys("deeksha1");
+//  	
+//      
+//      
+//      driver.findElementByXPath("//android.widget.Button[@text='OK']").click();
+    	
+      
+	}
+	public static void main(String[] args) {
+		try {
+			ClickOnPreferences.preferenceclick();
+		} catch (MalformedURLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+}

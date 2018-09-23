@@ -1,0 +1,21 @@
+package walletHubReviewCheck;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class WriteAReviewTest {
+	public static void selectHealth()throws Exception
+	{
+		
+		CommonMeths.handlingClicks("drpdown");
+		CommonMeths.handlingClicks("health");
+		CommonMeths.handlingClicks("overallRate");
+		CommonMeths.handlingtextboxes("review", ConstantsDeclared.review);
+		CommonMeths.handlingClicks("submit");
+		
+	}
+
+}

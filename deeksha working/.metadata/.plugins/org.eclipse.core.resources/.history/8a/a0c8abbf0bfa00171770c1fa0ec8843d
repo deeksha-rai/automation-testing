@@ -1,0 +1,44 @@
+package utilities;
+
+import Utilities.WorkingWithExcel;
+
+public class ConstantValues {
+	
+	public static final String chromedriverexe = "D:\\selenium\\chrome driver\\chromedriver.exe";
+	public static final String excelPath = "C:\\Users\\SONY\\Documents\\deeksha working\\EdurekaProject\\TestData.xlsx";
+	public static final String propertiesfile = "C:\\Users\\SONY\\Documents\\deeksha working\\EdurekaProject\\Locators.properties";
+	public static final String screenshotpath = "D:\\selenium\\ScreenShots\\";
+	
+	public static final String browserType = WorkingWithExcel.readValues("TestData", 1, 5);
+	public static final String websiteURL = WorkingWithExcel.readValues("TestData", 2, 5);
+	public static final String userName = WorkingWithExcel.readValues("TestData", 3, 5);
+	
+	public static final String password = WorkingWithExcel.readValues("TestData", 4, 5);
+	public static final String NoOfPassenger = WorkingWithExcel.readValues("TestData", 8, 5);
+	public static final String DepartFrom = WorkingWithExcel.readValues("TestData", 9, 5);
+	public static final String DepartMonth = WorkingWithExcel.readValues("TestData", 10, 5);
+	public static final String DepartDate = WorkingWithExcel.readValues("TestData", 11, 5);
+	public static final String ArriveCity = WorkingWithExcel.readValues("TestData", 12, 5);
+	public static final String ReturnMonth = WorkingWithExcel.readValues("TestData", 13, 5);
+	public static final String ReturnDate = WorkingWithExcel.readValues("TestData", 14, 5);
+	public static final String Fname = WorkingWithExcel.readValues("TestData", 19, 5);
+	public static final String Lname = WorkingWithExcel.readValues("TestData", 20, 5);
+	public static final String meal = WorkingWithExcel.readValues("TestData", 21, 5);
+	public static final String cardType = WorkingWithExcel.readValues("TestData", 22, 5);
+	public static final String cardNumber = WorkingWithExcel.readValues("TestData", 23, 5);
+	public static final String ExpMonth = WorkingWithExcel.readValues("TestData", 24, 5);
+	public static final String ExpYear = WorkingWithExcel.readValues("TestData", 25, 5);
+	public static final String FirstName = WorkingWithExcel.readValues("TestData", 26, 5);
+	public static final String LastName = WorkingWithExcel.readValues("TestData", 27, 5);
+	public static final String BillAddress = WorkingWithExcel.readValues("TestData", 28, 5);
+	public static final String BilCity = WorkingWithExcel.readValues("TestData", 29, 5);
+	public static final String BilState = WorkingWithExcel.readValues("TestData", 30, 5);
+	public static final String BilzipCode = WorkingWithExcel.readValues("TestData", 31, 5);
+	public static final String BilCountry = WorkingWithExcel.readValues("TestData", 32, 5);
+	public static final String DelAddress = WorkingWithExcel.readValues("TestData", 33, 5);
+	public static final String DelCity = WorkingWithExcel.readValues("TestData", 34, 5);
+	public static final String Delstate = WorkingWithExcel.readValues("TestData", 35, 5);
+	public static final String Delzipcode = WorkingWithExcel.readValues("TestData", 36, 5);
+	public static final String DelCountry = WorkingWithExcel.readValues("TestData", 37, 5);
+	
+}

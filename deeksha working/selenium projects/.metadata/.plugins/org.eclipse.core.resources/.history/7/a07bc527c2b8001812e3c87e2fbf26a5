@@ -1,0 +1,30 @@
+package walletHubReviewCheck;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LoginToSite {
+
+	public static WebDriver driver=BrowserSelection.driver;
+	
+	
+	public static void clickOnLogin() throws Exception
+	{
+		System.out.println(1);
+		driver.findElement(By.xpath("//*[@id=\"viewport\"]/header/div/nav[3]/div[2]/a[1]")).click();
+		System.out.println(1);
+	}
+	
+	public static void enterDetails(String username, String password) throws Exception
+	{ System.out.println(1);
+	WebDriverWait wait=new WebDriverWait(driver, 5);
+	WebElement email=driver.findElement(By.xpath("//*[@id=\"join-login\"]/form/div[1]/input"));
+	wait.until(ExpectedConditions.elementToBeClickable(email));
+		email.sendKeys(username);
+		driver.findElement(By.xpath("//*[@id=\"join-login\"]/form/div[2]/input")).sendKeys(password);
+	}
+}

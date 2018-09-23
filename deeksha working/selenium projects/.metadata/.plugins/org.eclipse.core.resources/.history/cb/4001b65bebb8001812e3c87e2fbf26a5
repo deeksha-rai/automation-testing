@@ -1,0 +1,25 @@
+package walletHubReviewCheck;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class WriteAReviewTest {
+	public static WebDriver driver=BrowserSelection.driver;
+	
+	public static void selectHealth()throws Exception
+	{
+		driver.findElement(By.xpath("//*[@id=\"reviewform\"]/div[1]/div/div/span[2]/i")).click();
+		driver.findElement(By.xpath("//*[@id=\"reviewform\"]/div[1]/div/ul/li[2]/a")).click();
+		Thread.sleep(5000);
+		
+		driver.findElement(By.xpath("//*[@id=\"overallRating\"]/a[4]")).click();
+		String review="nbvhjvrjjrhgihgiowejbgajbvkgsabvohbefpiubWPIEFUBPwiebfvpiHBSD VB IHASBdavioGrpigbvpiHRR VGIrbg v;ijtfbfhew fhw dvh hv hw vhwfhwvefhvwh vhf v fdbbvbdfjjjjjjjjbbbbbbbbbbbvadfvbeioubfpoiwehvpsbpijafbpiaffjbvpisaubvpisajbiasbi";
+		driver.findElement(By.id("review-content")).sendKeys(review);
+		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+		driver.findElement(By.cssSelector("input[type='submit']")).click();
+	}
+
+}

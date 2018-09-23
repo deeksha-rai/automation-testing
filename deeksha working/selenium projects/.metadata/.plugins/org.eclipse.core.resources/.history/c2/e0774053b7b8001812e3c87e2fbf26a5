@@ -1,0 +1,23 @@
+package walletHubReviewCheck;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class BrowserSelection {
+
+	public void OpenBrowser(String browserName)
+	{
+	if(browserName.equalsIgnoreCase("chrome"))
+	{
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chrome driver\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+	}
+	else if(browserName.equalsIgnoreCase("firefox"))
+	{
+		WebDriver driver=new FirefoxDriver();
+		
+	}
+}
+}

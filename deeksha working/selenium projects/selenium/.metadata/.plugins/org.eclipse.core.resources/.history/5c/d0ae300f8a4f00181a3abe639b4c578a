@@ -1,0 +1,11 @@
+package VietnammanualSanity;
+
+public class Taiwanmain {
+
+	public static void main(String[] args) {
+	Taiwanmanual abc=new Taiwanmanual();
+	abc.Create_REM();
+
+	}
+
+}

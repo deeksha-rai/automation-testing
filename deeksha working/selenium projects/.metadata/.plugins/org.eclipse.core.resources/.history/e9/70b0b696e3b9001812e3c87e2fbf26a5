@@ -1,0 +1,31 @@
+package mainDiverScript;
+
+import pagesOfWebSite.HoverOverStars;
+import pagesOfWebSite.LoginToSite;
+import pagesOfWebSite.VerifyReview;
+import pagesOfWebSite.WriteAReviewTest;
+import supportProviderUtilities.ConstantsDeclared;
+import supportProviderUtilities.ExcelReadWrite;
+
+public class MainClass {
+
+		 public static String runMOde;	
+		  public static boolean bValue = true;
+		  
+		  public static void main(String[] args) throws Exception {
+			try {
+				System.out.println(ConstantsDeclared.excelPath);
+			ExcelReadWrite.setExcelPath(ConstantsDeclared.excelPath);  
+	        LoginToSite.clickOnLogin();
+	        LoginToSite.enterDetails();
+	        HoverOverStars.hoveronstars();
+	        WriteAReviewTest.writehealthreview();
+	        VerifyReview.compareReviews();
+	  	     }
+			catch(Exception e)
+			{
+			e.printStackTrace();
+	         }
+       }
+
+}

@@ -1,0 +1,20 @@
+package walletHubReviewCheck;
+
+public class CostantsDeclared {
+	public static void excelPath="F:\\deeksha working\\selenium projects\\walletHubTest";
+	public static void String userName=
+	public static void passowrd
+	public static void login
+	public static void stars
+	public static void third
+	public static void fifth
+	public static void health
+	public static void overallRate
+	public static void review
+	public static void submit
+	public static void profile
+	public static void viewReview
+	public static void compare
+
+
+}

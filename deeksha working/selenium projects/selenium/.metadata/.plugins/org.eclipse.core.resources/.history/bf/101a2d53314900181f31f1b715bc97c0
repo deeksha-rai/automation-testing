@@ -1,0 +1,33 @@
+package VietnammanualSanity;
+import org.openqa.selenium.WebDriver;
+public class Sanitymain {
+
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		CreateManual abc =new CreateManual();
+		abc.Create_REM();
+		
+		Createhanoi afd = new Createhanoi();
+		afd.Create_REM();
+		Authhanoi mng = new  Authhanoi();
+		
+		
+		Authorisemanual abcd= new Authorisemanual();
+		WebDriver driver = abcd.LogIn();	
+		abcd.AuthRem(driver, abc.RemId1,0);
+		//abcd.AuthRem(driver, abc.RemId2,2);
+        abcd.AuthRem(driver, abc.RemId3,2);
+          //abcd.AuthRem(driver, abc.RemId4,6);
+	abcd.AuthRem(driver, abc.RemId5,4);
+	abcd.AuthRem(driver, abc.RemId6,6);
+		WebDriver driver2 = abcd.SologIn();	
+		abcd.Authso(driver2,abc.RemId7,0);
+	   
+		
+		
+	}
+	
+	
+	
+}

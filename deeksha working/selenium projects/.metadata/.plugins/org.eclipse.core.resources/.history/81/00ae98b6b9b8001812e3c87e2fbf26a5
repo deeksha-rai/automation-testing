@@ -1,0 +1,13 @@
+package walletHubReviewCheck;
+
+import org.openqa.selenium.WebDriver;
+
+public class LoginToSite {
+
+	WebDriver driver=BrowserSelection.driver;
+	
+	public static void clickOnLogin()
+	{
+		
+	}
+}

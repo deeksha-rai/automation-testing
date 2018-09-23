@@ -1,0 +1,19 @@
+package walletHubReviewCheck;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class VerifyReview {
+
+	public static WebDriver driver=BrowserSelection.driver;
+	public static void goToProfile()
+	{
+		Actions act=new Actions(driver);
+		WebElement profile=driver.findElement(By.xpath("//*[@id=\"viewport\"]/header/div/nav[3]/div[1]/a[9]"));
+		act.moveToElement(profile).build().perform();
+		driver.findElement(By.xpath("//*[@id=\"m-user\"]/ul/li[1]/a")).click();
+		
+	}
+}

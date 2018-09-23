@@ -1,0 +1,51 @@
+package mainDiverScript;
+
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+import pagesOfWebSite.HoverOverStars;
+import pagesOfWebSite.LoginToSite;
+import pagesOfWebSite.VerifyReview;
+import pagesOfWebSite.WriteAReviewTest;
+import supportProviderUtilities.ConstantsDeclared;
+import supportProviderUtilities.ExcelReadWrite;
+
+
+
+public class MainClass {
+		  @Test
+		  public  void landingPage() throws Exception {
+			try {
+				
+			ExcelReadWrite.setExcelPath(ConstantsDeclared.excelPath);  
+	        LoginToSite.clickOnLogin();
+	        LoginToSite.enterDetails();
+	        HoverOverStars.hoveronstars();
+	        WriteAReviewTest.writehealthreview();
+	        VerifyReview.compareReviews();
+	  	     }
+			catch(Exception e)
+			{
+			e.printStackTrace();
+	         }
+       }
+		  @AfterMethod
+		  public void fetchMostRecentTestResult(ITestResult result) {
+
+		      int status = result.getStatus();
+
+		      switch (status) {
+		          case ITestResult.SUCCESS:
+		        	  System.out.println("Review provided by user matched");
+		              break;
+		          case ITestResult.FAILURE:
+		              System.out.println("Failed to match the review provided by user");
+		              break;
+		 
+		          default:
+		              throw new RuntimeException("Invalid status");
+		      }
+		  }
+
+}

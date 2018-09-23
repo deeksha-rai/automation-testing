@@ -1,0 +1,44 @@
+package stepdefinitionfile;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class AtitudeTest {
+
+	@When("^I meet([^\"]*)$")
+	public void Imeet(String str)
+	{
+		
+	}
+	@Given("^I work in ([^\"]*)$")
+	public void ln(String str)
+	{
+		if(str.equalsIgnoreCase("latenights"))
+			
+		System.out.println("latenight");
+		else
+			System.out.println("morning");
+		
+	}
+//	For parameterized use case scenario use \\ befor and after the regular expression as it denotes cucumber that there are several values
+	@Given("^we work in \"([^\"]*)\"$ ")
+	public void we_work_in(String str)
+	{
+		System.out.println(str);
+	}
+	@When("^we meet \"([^\"]*)\"$")
+	public void we_meet(String str)
+	{
+		
+	}
+	@Then("^I ([^\"]*) him$")
+	public void greet(String str)
+	{
+		if(str.equalsIgnoreCase("Greeted"))
+			System.out.println("greeted");
+		else
+			System.out.println("not greeted");
+	}
+
+}

@@ -1,0 +1,34 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class OpenBrowser {
+		static WebDriver driver;
+		public static void main(String args[])
+		{
+			System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chromedriver2.37\\chromedriver.exe");
+			driver=new ChromeDriver();
+			driver.get("https://www.facebook.com/");
+			WebElement user=driver.findElement(By.id("email"));
+			user.click();
+			String email=user.getText();
+			String password=driver.findElement(By.id("pass")).getText();
+			while((email.isEmpty())||(password.isEmpty()))
+			{
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				
+				email=driver.findElement(By.id("email")).getText();
+				System.out.println(user);
+				System.out.println(email);
+				password=driver.findElement(By.id("pass")).getText();
+//				if(email)
+				
+			}
+			
+			driver.findElement(By.id("u_0_2")).click();
+	}
+
+}

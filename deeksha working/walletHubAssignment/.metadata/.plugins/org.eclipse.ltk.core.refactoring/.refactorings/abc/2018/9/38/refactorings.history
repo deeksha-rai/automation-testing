@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;abc.sdsd.java&apos; to &apos;FBLogin.java&apos;&#x0D;&#x0A;- Original project: &apos;abc&apos;&#x0D;&#x0A;- Original element: &apos;abc.sdsd.java&apos;&#x0D;&#x0A;- Renamed element: &apos;abc.FBLogin.java&apos;" description="Rename compilation unit &apos;sdsd.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;abc{sdsd.java" name="FBLogin.java" references="false" stamp="1537293578752" version="1.0"/>
+</session>

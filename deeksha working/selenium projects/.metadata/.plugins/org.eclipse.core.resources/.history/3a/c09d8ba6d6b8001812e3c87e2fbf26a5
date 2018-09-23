@@ -1,0 +1,37 @@
+package walletHubReviewCheck;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class HoverOverStars {
+	public static WebDriver driver=BrowserSelection.driver;
+	
+	public static void hoveronstars() throws Exception
+	{
+		Actions act=new Actions(driver);
+		WebElement stars=driver.findElement(By.xpath("//*[@id=\"wh-body-inner\"]/div[2]/div[3]/span"));
+		act.moveToElement(stars).build().perform();
+		
+		List <WebElement> rate=driver.findElements(By.xpath("//*[@id=\"wh-body-inner\"]/div[2]/div[3]/div[1]/div/em/span"));
+		for (WebElement s:rate)
+		{
+			String str=s.getText();
+			if(str.equalsIgnoreCase("Bad"))
+				System.out.println("Only first star lit up:Rating is Bad");
+			else if (str.equalsIgnoreCase("Below Average"))
+				System.out.println("First two star lit up:Rating is Below Average");
+			else if (str.equalsIgnoreCase("Average"))
+				System.out.println("First three star lit up:Rating is Average");
+			else if (str.equalsIgnoreCase("Good"))
+				System.out.println("First four star lit up:Rating is Good");
+			else
+				System.out.println("Five stars lit up:Rating is Excellent");
+			
+		}
+		
+	}
+}

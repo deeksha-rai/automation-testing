@@ -1,0 +1,22 @@
+package pagesOfWebSite;
+
+import supportProviderUtilities.CommonMeths;
+
+public class VerifyReview {
+   public static void goToProfile()throws Exception
+	{
+		
+		CommonMeths.handlinghoverwithoutclick("profile");
+		CommonMeths.handlingClicks("selectprfl");
+		CommonMeths.handlingClicks("viewReview");
+		 
+	}
+	
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		String opinion=driver.findElement(By.xpath("//*[@id=\"reviews\"]/div[3]/div[1]/div[1]/div[5]")).getText();
+//		if(str.equalsIgnoreCase(opinion))
+//			System.out.println("review done sucessfully");
+//		else
+//			System.out.println("not done");
+//	}
+}

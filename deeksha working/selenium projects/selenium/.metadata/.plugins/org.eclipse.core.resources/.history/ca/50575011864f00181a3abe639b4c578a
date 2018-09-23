@@ -1,0 +1,113 @@
+package Vietnamdb;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Create {
+
+	
+				 public static void main(String args[]) throws InterruptedException
+				 {
+						
+						System.setProperty("webdriver.chrome.driver", "D:/Vikas kapoor selenium notes/chromedriver.exe");
+				        WebDriver driver = new   ChromeDriver();
+				        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+				        driver.get("http://172.21.163.65:24000/Bancs/common/dologin.jsp?method=authMode&JSLoadingMode=null&status=null");
+						driver.manage().window().maximize();
+						driver.findElement(By.name("userId")).sendKeys("pat8");
+						
+						WebElement password=driver.findElement(By.name("password"));
+						 password.sendKeys("tcs123");
+						 
+							password.sendKeys(Keys.RETURN);
+						
+							driver.findElement(By.id("Login")).submit();
+							System.out.println("logged in");
+							
+							Thread.sleep(3000);
+							
+							driver.findElement(By.id("userMenu")).click();
+							System.out.println("menu clicked");
+							driver.findElement(By.xpath("//a[@title='Exception Management']")).click();
+							driver.findElement(By.xpath("//a[@title='WorkItem Summary List']")).click();
+							driver.switchTo().frame("panel2");
+							System.out.println("Enetered workitem summary");
+							 Thread.sleep(3000);
+							 
+							 System.out.println(driver.findElement(By.xpath("//*[@id='ct_w_StatList_CASL_Table']/tbody/tr[19]/td[16]")).getText());
+
+							List<WebElement> rows = driver.findElements(By.xpath("//*[@id='ct_w_StatList_CASL_Table']/tbody/tr"));
+						
+							 System.out.println(rows.size());
+							 int i;
+
+								for ( i=1;i<=rows.size();i++)
+								{
+									System.out.println(driver.findElement(By.xpath("//table[@id='ct_w_StatList_CASL_Table']/tbody/tr["+i+"]/td[16]")).getText());
+									String a = driver.findElement(By.xpath("//table[@id='ct_w_StatList_CASL_Table']/tbody/tr["+i+"]/td[16]")).getText();
+									
+									System.out.println(i);
+									if((a).equalsIgnoreCase("Inward - NNC Mass Auth"))
+									{
+										System.out.println(i);
+										System.out.println("holaaaaaaaaaaaaaaaaaaaaa");
+										WebElement tabclicks=	driver.findElement(By.xpath("//table[@id='ct_w_StatList_CASL_Table']/tbody/tr["+i+"]/td[16]"));
+
+										System.out.println(tabclicks);
+
+										Actions action = new Actions(driver).contextClick(tabclicks);
+										action.build().perform();
+
+										driver.findElement(By.xpath("//*[@id='Manage15']")).click();
+										System.out.println("right click");
+										break;
+									}
+									}
+				 driver.switchTo().defaultContent();
+								driver.switchTo().frame("panel3");
+								
+								//System.out.println(driver.findElement(By.xpath("//*[@id='ct_ct_MassUpdateRemitanceList_Table']/tbody/tr[19]/td[5]")).getText());
+
+								List<WebElement> rows2 = driver.findElements(By.xpath("//*[@id='ct_ct_MassUpdateRemitanceList_Table']/tbody/tr"));
+								List oCheckBox = driver.findElements(By.id("ct_ct_MassUpdateRemitanceList_wca_ACCEPT"));
+								 System.out.println(rows.size());
+								 int j;
+
+									for ( j=1;j<=rows2.size();j++)
+									{
+										System.out.println(driver.findElement(By.xpath("//table[@id='ct_ct_MassUpdateRemitanceList_Table']/tbody/tr["+j+"]/td[5]")).getText());
+										String a = driver.findElement(By.xpath("//table[@id='ct_ct_MassUpdateRemitanceList_Table']/tbody/tr["+j+"]/td[5]")).getText();
+										System.out.println(a);
+										
+										
+										if((a).equalsIgnoreCase("115533"))
+										{
+											System.out.println(j);
+											
+											//String abc=driver.findElement(By.xpath("//table[@id='ct_ct_MassUpdateRemitanceList_Table']/tbody/tr["+j+"]/td[5]")).getText();
+											((WebElement) oCheckBox.get(j-1)).click();
+											
+											
+											break;
+										}
+										}
+								
+								driver.findElement(By.id("ct_ct_MassUpdateRemitanceList_Table_save_but")).click();
+								
+								
+				 }
+				 
+}
+
+	
+	
+	
+
+
+	
+

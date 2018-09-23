@@ -1,0 +1,76 @@
+package walletHubReviewCheck;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class CommonMeths {
+
+	public static WebDriver driver;
+	  
+	  public static WebDriver selectBrowser(String argument, String brsName) {
+		
+		if (brsName.equalsIgnoreCase("chrome")) {
+			  System.setProperty("webdriver.chrome.driver", ConstantsDeclared.chromedriverexe);
+			 driver = new ChromeDriver();
+			 // Implict wait command	
+			 driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		} else if (brsName.equalsIgnoreCase("firefox")) {
+			 System.setProperty("webdriver.gecko.driver", ConstantsDeclared.firefoxdriverexe);
+			  
+			   driver = new FirefoxDriver();
+		} else {
+			System.out.println("Browser name is wrong");
+		}
+		return driver;
+	  }
+	  
+	  public static void openUrl(String Url)
+	  {
+		  driver.get(Url);
+	  }
+//	  public static void handlingmousehoveringwithoutClick(String propertyAttribute, String ipName) throws Exception {
+//		  	WebElement membershiplink = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+//			Actions act = new Actions(driver);
+//			act.moveToElement(membershiplink).build().perform();	  		
+//	  }
+//	  
+//	  public static void handlingmousehoveringwithClick(String propertyAttribute, String ipName) throws Exception {
+//		  	WebElement joinLink = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+//			Actions act = new Actions(driver);
+//			act.moveToElement(joinLink).click().build().perform();
+//	  }
+//	  public static void scrolling(String propertyAttribute, String ipName) {
+//	  		JavascriptExecutor jse = (JavascriptExecutor) driver;
+//	  		jse.executeScript("scroll(0,400)");
+//	  }
+//	  
+//	  public static void handlingClicks(String propertyAttribute, String ipName) throws Exception {
+//			WebElement joinNowButton = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+//			joinNowButton.click();
+//	  }
+//	  
+//	  public static void fetchValue(String propertyAttribute, String ipName) throws Exception {
+//			WebDriverWait wait = new WebDriverWait(driver, 20);
+//			String cartValue = wait.until(ExpectedConditions.visibilityOf(driver.findElement(locatorread.readingPropertyValues(propertyAttribute)))).getText();
+//			excelReadwrite.writeToExcel("TestData", 3, 6, cartValue);
+//			System.out.println(cartValue);
+//	  }
+	  
+	  public static void handlingtextboxes(String propertyAttribute, String ipName) throws Exception {
+			WebElement text = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			text.sendKeys(ipName);	  		
+	  	}
+	  
+//	  public static void handlingdropdowns(String propertyAttribute, String ipName) throws Exception {
+//			WebElement enterCountry = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+//			Select selcountry = new Select(enterCountry);
+//			selcountry.selectByVisibleText(ipName);	  		
+//	  	}
+//}

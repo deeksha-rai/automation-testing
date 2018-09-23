@@ -1,0 +1,10 @@
+package abc;
+
+public class xyz {
+
+	@Test
+	public void aaa()
+	{
+		System.out.println("1");
+	}
+}

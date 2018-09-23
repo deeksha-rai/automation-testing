@@ -1,0 +1,74 @@
+package supportProviderUtilities;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import supportProviderUtilities.ConstantsDeclared;
+
+public class CommonMeths {
+
+	public static WebDriver driver;
+	  
+	  public static  WebDriver selectBrowser(String brsName) 
+	  {
+		
+		if (brsName.equalsIgnoreCase("chrome")) {
+			  System.setProperty("webdriver.chrome.driver", ConstantsDeclared.chromedriverexe);
+			 driver = new ChromeDriver();
+			 driver.manage().window().maximize();
+			 // Implicit wait command	
+			 
+		} else if (brsName.equalsIgnoreCase("firefox")) {
+			 System.setProperty("webdriver.gecko.driver", ConstantsDeclared.firefoxdriverexe);
+			  
+			   driver = new FirefoxDriver();
+		} else {
+			System.out.println("Browser name is wrong");
+		}
+		return driver;
+	  }
+	  
+	  public static void openUrl(String Url)
+	  {
+		  
+		  driver.get(Url);
+	  }
+	  public static void handlingmousehoveringwithoutClick(String propertyAttribute, String ipName) throws Exception {
+		  	WebElement hoveronStars = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			Actions act = new Actions(driver);
+			act.moveToElement(hoveronStars).build().perform();	  		
+	  }
+	  
+	  public static void handlingClicks(String propertyAttribute) throws Exception {
+			WebElement buttonclick = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			buttonclick.click();
+	  }
+	  
+	  public static void handlingtextboxes(String propertyAttribute, String ipName) throws Exception {
+		    WebElement text = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			text.sendKeys(ipName);
+			
+	  	}
+	  public static String returnStringValue(String propertyAttribute) throws Exception {
+		    WebElement text = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			String review=text.getText();
+			return review;
+			
+	  	}
+	  public static void handlinghoverwithoutclick(String propertyAttribute) throws Exception {
+		  	WebElement stars = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			Actions act = new Actions(driver);
+			act.moveToElement(stars).build().perform();
+	  }
+
+	  
+	  public static void handlingmousehoveringwithClick(String propertyAttribute) throws Exception {
+		  	WebElement fifth = driver.findElement(locatorread.readingPropertyValues(propertyAttribute));
+			Actions act = new Actions(driver);
+			act.moveToElement(fifth);
+			Thread.sleep(3000);
+			act.click().build().perform();
+			Thread.sleep(3000);
+}
+}

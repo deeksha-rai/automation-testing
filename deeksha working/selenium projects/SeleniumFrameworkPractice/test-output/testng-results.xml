@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="57686" started-at="2018-06-04T07:18:07Z" finished-at="2018-06-04T07:19:05Z">
+    <groups>
+    </groups>
+    <test name="ChromeTest" duration-ms="57686" started-at="2018-06-04T07:18:07Z" finished-at="2018-06-04T07:19:05Z">
+      <class name="com.practice.framework.mainfunctionClass">
+        <test-method status="PASS" signature="test()[pri:0, instance:com.practice.framework.mainfunctionClass@42f93a98]" name="test" duration-ms="57657" started-at="2018-06-04T07:18:07Z" finished-at="2018-06-04T07:19:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+      </class> <!-- com.practice.framework.mainfunctionClass -->
+    </test> <!-- ChromeTest -->
+  </suite> <!-- Suite -->
+</testng-results>

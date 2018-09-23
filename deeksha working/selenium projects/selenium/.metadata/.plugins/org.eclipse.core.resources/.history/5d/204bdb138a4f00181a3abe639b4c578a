@@ -1,0 +1,22 @@
+package VietnammanualSanity;
+
+import org.openqa.selenium.WebDriver;
+
+public class Taiwanmain {
+
+	public static void main(String[] args) {
+	Taiwanmanual abc=new Taiwanmanual();
+	abc.Create_REM();
+
+	Forexrepair abcd= new Forexrepair();
+	WebDriver driver = abcd.LogInunitaryrepairhcm();	
+	abcd.AuthRem(driver, abc.RemId1,0);
+	abcd.AuthRem(driver, abc.RemId2,2);
+     abcd.AuthRem(driver, abc.RemId3,4);
+abcd.AuthRem(driver, abc.RemId4,6);
+	WebDriver driver2 = abcd.LogInauthbulkhcm();	
+	abcd.AuthRem(driver2,abc.RemId5,0);
+	
+	}
+
+}

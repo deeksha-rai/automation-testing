@@ -1,0 +1,20 @@
+package pagesOfWebSite;
+
+import supportProviderUtilities.CommonMeths;
+import supportProviderUtilities.ConstantsDeclared;
+
+public class VerifyReview {
+   public static void compareReviews()throws Exception
+	{
+		
+		CommonMeths.handlinghoverwithoutclick("profile");
+		CommonMeths.handlingClicks("selectprfl");
+		CommonMeths.handlingClicks("viewReview");
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		String opinion=CommonMeths.returnStringValue("viewReview");
+		if(ConstantsDeclared.review.equalsIgnoreCase(opinion))
+			System.out.println("review done sucessfully");
+		else
+			System.out.println("not done");
+	}
+}

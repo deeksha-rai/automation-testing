@@ -1,0 +1,16 @@
+package walletHubReviewCheck;
+
+import walletHubReviewCheck.CommonMeths;
+import walletHubReviewCheck.ConstantsDeclared;
+
+public class WriteAReviewTest {
+	public static void selectHealth()throws Exception
+	{   CommonMeths.handlingClicks("drpdown");
+		CommonMeths.handlingClicks("health");
+		CommonMeths.handlingClicks("overallRate");
+		CommonMeths.handlingtextboxes("review", ConstantsDeclared.review);
+		CommonMeths.handlingClicks("submit");
+		
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.udemy.appium;
+
+import java.net.MalformedURLException;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class UiAutomatorTest extends BaseClass {
+
+	public static void UiAutoTest() throws MalformedURLException
+	{
+		//syntax----driver.findElementByAndroidUIAutomator("(attribute(value))")
+		AndroidDriver<AndroidElement> driver=BaseClass.basemethod();
+		driver.findElementByAndroidUIAutomator("text(\"Views\")");
+	}
+}

@@ -1,0 +1,14 @@
+package walletHubReviewCheck;
+
+public class ExcelReadWrite {
+	static XSSFSheet ws;
+	public static XSSfWorkBook wb;
+	public static XSSFRow wr;
+	
+
+	
+	public static void setExcelPath()
+	{
+		
+	}
+}

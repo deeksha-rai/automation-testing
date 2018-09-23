@@ -1,0 +1,111 @@
+package Vietnamdb;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Create {
+
+	
+				 public static void main(String args[]) throws InterruptedException
+				 {
+						
+						System.setProperty("webdriver.chrome.driver", "D:/Vikas kapoor selenium notes/chromedriver.exe");
+				        WebDriver driver = new   ChromeDriver();
+				        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+				        driver.get("http://172.21.163.65:24000/Bancs/common/dologin.jsp?method=authMode&JSLoadingMode=null&status=null");
+						driver.manage().window().maximize();
+						driver.findElement(By.name("userId")).sendKeys("archana");
+						
+						WebElement password=driver.findElement(By.name("password"));
+						 password.sendKeys("tcs123");
+						 
+							password.sendKeys(Keys.RETURN);
+						
+							driver.findElement(By.id("Login")).submit();
+							System.out.println("logged in");
+							
+							Thread.sleep(3000);
+							
+							driver.findElement(By.id("userMenu")).click();
+							System.out.println("menu clicked");
+							
+					        
+					        driver.findElement(By.xpath("//a[@title='Credit Transfer']")).click();
+					        
+							 WebElement webobject1 = driver.findElement(By.xpath("//a[@title='Template List']"));
+						       ((JavascriptExecutor) driver).executeScript("arguments[0].click();", webobject1);
+							System.out.println("Navigating to Template window");
+							Thread.sleep(5000);
+							driver.switchTo().frame("panel2");
+							//wd.switchTo().frame("panel3");
+							System.out.println("Frame switched");
+							
+							Thread.sleep(2000);
+				            System.out.println("Search is clicked");
+				            
+				            driver.findElement(By.id("Search")).click();
+				            Thread.sleep(2000);
+				           
+				
+				            WebElement tabclicks = driver.findElement(By.xpath("/html/body/form/span/fieldset/div[2]/table/tbody/tr/td[2]"));
+							//commands for right click
+							Actions action = new Actions(driver).contextClick(tabclicks);
+							action.build().perform();
+							System.out.println("right click");
+							Thread.sleep(1000);
+							//wd.findElement(By.id("ct_w_RemTmpltLst_CASL_Table_m_1_5")).click();
+							driver.findElement(By.xpath("html/body/form/div/div/ul/li[5]/input")).click();
+							 Thread.sleep(2000);
+					        System.out.println("Create Remittance is clicked");
+					        Thread.sleep(1000);
+					        
+					        Alert save1 = driver.switchTo().alert();
+						    save1.accept();
+						    Thread.sleep(1000);
+						    
+						    driver.switchTo().frame("panel3");
+				              
+						      
+					    	System.out.println("Frame switched again");
+					     
+							
+					    	driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("100");
+					    	//wd.findElement(By.xpath("html/body/form/div/div[5]/div/table/tbody/tr[5]/td/input")).findElement(By.tagName("input")).sendKeys("100");
+					   //wd.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("100");
+					    	System.out.println("credit amount entered");
+					        
+					     
+					        
+							
+					    	driver.findElement(By.id("Save&Close55")).click();
+							System.out.println("Save and close");
+							Alert save = driver.switchTo().alert();
+							save.accept();
+							Alert remitance = driver.switchTo().alert();
+							String S=remitance.getText();
+							System.out.println(S);
+							
+					        
+					
+								
+				 }
+				 
+}
+
+	
+	
+	
+
+
+	
+

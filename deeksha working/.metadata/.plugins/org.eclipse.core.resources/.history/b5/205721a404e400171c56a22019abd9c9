@@ -1,0 +1,30 @@
+
+package com.selenium.assignmentfour;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class HandleKeyboard {
+
+	WebDriver driver;
+	public void invokeChromeBrowser() {
+		try {
+			System.setProperty("webdriver.chrome.driver", "D:\\\\selenium\\\\chrome driver\\\\chromedriver.exe");
+			driver = new ChromeDriver();
+			driver.get("http://toolsqa.com/automation-practice-form/");
+			driver.findElement(By.xpath("").sendKeys("Keys.ARROW_DOWN");;
+		}
+	
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HandleKeyboard obj= new HandleKeyboard();
+		obj.invokeChromeBrowser(); 
+	}
+
+}

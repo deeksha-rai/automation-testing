@@ -1,0 +1,29 @@
+package com.selenium.basic;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Basic {
+
+	WebDriver driver;
+	public void invokeBrowser()
+	{
+		System.setProperty("webdriver.chrome.driver", "D:\\selenium\\chrome driver\\chromedriver.exe");
+		driver=new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(3000, TimeUnit.SECONDS);
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		Basic obj=new Basic();
+		obj.invokeBrowser();
+
+	}
+
+}

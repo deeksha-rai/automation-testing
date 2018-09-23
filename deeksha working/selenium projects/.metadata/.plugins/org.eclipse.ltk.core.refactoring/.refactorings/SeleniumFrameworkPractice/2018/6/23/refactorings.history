@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.practice.framework&apos; to &apos;KeyWordDrivenFramework/src&apos;&#x0D;&#x0A;- Original project: &apos;SeleniumFrameworkPractice&apos;&#x0D;&#x0A;- Destination element: &apos;KeyWordDrivenFramework/src&apos;&#x0D;&#x0A;- Original element: &apos;SeleniumFrameworkPractice/src/com.practice.framework&apos;" description="Copy package" destination="=KeyWordDrivenFramework/src" element1="/src&lt;com.practice.framework" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1528005173061" version="1.0"/>
+</session>

@@ -1,0 +1,60 @@
+ package com.udemy.appium;
+
+import java.net.MalformedURLException;
+
+import org.openqa.selenium.By;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class ClickOnPreferences extends BaseClass {
+
+	//Test Case 1- Click on Preference->Preference Dependencie->Check Wifi->click on wifi settings->enter text->ok
+	
+	public static void preferenceclick() throws MalformedURLException
+	{
+	AndroidDriver<AndroidElement>driver=basemethod();
+	
+	
+	//mostly used locators are id, xpath,class,uiAutomator
+	//syntax for xpath
+	/*    
+	 * 
+	 *  //tagname[@attribute='value']
+	 * 
+	 */
+	AndroidElement preference=driver.findElement(By.xpath("//android.widget.TextView[@text='Preference]'"));
+	
+	preference.click();
+	
+    AndroidElement preferencedependency=driver.findElement(By.xpath("//android.widget.TextView[@text='3. Preference dependencies']"));
+	
+      preferencedependency.click();
+      
+      AndroidElement wifi=driver.findElement(By.id("android:id/checkbox"));
+  	
+      wifi.click();
+      
+      AndroidElement wifisettings=driver.findElement(By.xpath("//android.widget.RelativeLayout[2]"));
+    	
+      wifisettings.click();
+      
+      AndroidElement entertext=driver.findElement(By.className("android.widget.EditText"));
+  	
+      entertext.sendKeys("deeksha1");
+      
+      AndroidElement okbutton=driver.findElement(By.xpath("//android.widget.Button[@text='OK']"));
+    	
+      okbutton.click();
+	}
+	public static void main(String[] args) {
+		try {
+			ClickOnPreferences.preferenceclick();
+		} catch (MalformedURLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+}

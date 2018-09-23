@@ -1,0 +1,46 @@
+package taiwan;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+public class FileRealease {
+public void fr (WebDriver wd  ) throws InterruptedException{
+	Thread.sleep(5000);
+		  System.out.println("Entered file release");
+	    wd.switchTo().defaultContent();
+		  Thread.sleep(4000);
+		wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		wd.findElement(By.xpath("//span[@id='tabText_0']")).click();
+        System.out.println("menu clicked");
+        System.out.println("Navigate to Service Integrator");
+	    wd.findElement(By.xpath("//span[@title='Service Integrator']")).click();
+	    
+	    WebElement webobject2 = wd.findElement(By.xpath("//p[@title='Message List']"));
+	    JavascriptExecutor executor1 = (JavascriptExecutor)wd;
+        executor1.executeScript("arguments[0].click();", webobject2);
+       
+		System.out.println("Message List is opened");
+		Thread.sleep(8000);
+		wd.switchTo().frame("panel2");
+		System.out.println("frame switch");
+		WebElement Source_sys = wd.findElement(By.xpath("/html/body/form/div/table/tbody/tr/td[2]/div/span/span[2]/img"));
+		Source_sys.click();
+		System.out.println("Element found");
+		Source_sys = wd.findElement(By.xpath("/html/body/form/div[4]/li[2]"));
+	    Source_sys.click();
+		System.out.println("files is selected");
+		wd.findElement(By.xpath("/html/body/form/div/table/tbody/tr/td[6]/div/span/span/input")).sendKeys("Uploaded");
+		System.out.println("status textbox is selected");
+		System.out.println("uploaded is selected");
+Source_sys = wd.findElement(By.xpath("/html/body/form/div/div[3]/div[2]/input"));
+	    Source_sys.click();
+		System.out.println("Search is clicked");
+		wd.manage().timeouts().implicitlyWait(55, TimeUnit.SECONDS);
+		System.out.println("now to click wizard for order summary");
+		wd.manage().timeouts().implicitlyWait(55, TimeUnit.SECONDS);
+		  wd.switchTo().defaultContent();
+		}
+}
+

@@ -1,0 +1,22 @@
+package pagesOfWebSite;
+
+import supportProviderUtilities.CommonMeths;
+import walletHubReviewCheck.ConstantsDeclared;
+
+public class LoginToSite {
+
+	public static void clickOnLogin() throws Exception
+	{
+	CommonMeths.handlingClicks("LoginUser");
+	}
+	
+	public static void enterDetails(String username, String password) throws Exception
+	{ 
+	System.out.println(1);
+	Thread.sleep(5000);
+	CommonMeths.handlingtextboxes("userName", ConstantsDeclared.userName);
+	CommonMeths.handlingtextboxes("password", ConstantsDeclared.passowrd);
+	CommonMeths.handlingClicks("login");
+	
+	}
+}

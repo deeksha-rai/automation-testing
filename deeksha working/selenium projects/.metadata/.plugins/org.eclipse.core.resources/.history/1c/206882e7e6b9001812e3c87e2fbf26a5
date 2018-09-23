@@ -1,0 +1,21 @@
+package pagesOfWebSite;
+
+import org.testng.annotations.Test;
+
+import supportProviderUtilities.CommonMeths;
+import supportProviderUtilities.ConstantsDeclared;
+@Test
+public class WriteAReviewTest {
+	public static void writehealthreview()throws Exception
+	{   CommonMeths.handlingClicks("drpdown");
+	
+		CommonMeths.handlingClicks("health");
+		
+//		CommonMeths.handlingClicks("overallRate");
+		
+		CommonMeths.handlingtextboxes("review", ConstantsDeclared.review);
+		CommonMeths.handlingClicks("submit");
+		
+	}
+
+}

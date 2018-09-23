@@ -1,0 +1,28 @@
+package taiwan;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+public class Ordermaster 
+{
+	public void ctod (WebDriver wd  ) throws InterruptedException
+	{
+		Thread.sleep(5000);
+		 System.out.println("Entered CreditOrder Master details");
+		 Set<String> s = wd.getWindowHandles();
+			for (String windowObject : s) {
+				wd.switchTo().window(windowObject);
+			} 
+			WebDriverWait wait = new WebDriverWait(wd, 20);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[2]/ul/ul/li[2]/ul/li[3]/ul/li/ul/li[2]/label[3]/a"))).click();
+		System.out.println("clicked credit order master");
+		 System.out.println("Go to wizard for work item details");
+		 //wd.switchTo().frame("panel5");
+	
+	
+	}
+}
+

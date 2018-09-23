@@ -1,0 +1,11 @@
+package walletHubReviewCheck;
+
+public class ConstantsDeclared {
+	public static String excelPath="F:\\deeksha working\\selenium projects\\walletHubTest";
+	public static String chromedriverexe="D:\\\\selenium\\\\chromedriver2.37\\\\chromedriver.exe";
+	public static String userName=ExcelReadWrite.readStringData("Data", 3, 4);
+	public static String passowrd=ExcelReadWrite.readStringData("Data", 4, 4);
+	public static String review=ExcelReadWrite.readStringData("Data", 11, 4);
+
+
+}

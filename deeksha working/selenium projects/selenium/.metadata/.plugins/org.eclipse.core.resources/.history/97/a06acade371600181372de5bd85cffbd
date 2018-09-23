@@ -1,0 +1,141 @@
+package taiwan;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+public class Nostroposition {
+	
+	WebDriver login1;
+	public WebDriver login_screen(String user,String pwd)
+	{
+		WebDriver login1;
+	File file = new File("D:/Vikas kapoor selenium notes/chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+	login1 = new ChromeDriver();
+	login1.get("http://172.21.163.65:24000/Bancs/common/dologin.jsp?method=authMode&JSLoadingMode=null");
+	login1.navigate().refresh();
+	login1.manage().window().maximize();
+try{
+	   WebElement username = login1.findElement(By.id("userId"));
+	   username.sendKeys(user);
+	   WebElement password = login1.findElement(By.id("password"));
+	   password.sendKeys(pwd);
+ 	   Thread.sleep(100L);
+ 	   //WebElement oupca =  login1.findElement(By.id("entity"));
+ 	   
+
+
+
+password.sendKeys(Keys.RETURN);
+ 	   //oupca.sendKeys("BTMU Taipei Branch");
+ 	   //Select select = new Select(oupca);
+ 	   //select.selectByValue("BTMU Taipei Branch");
+ 	   WebElement login = login1.findElement(By.id("Login"));
+ 	   login.click();
+ 	   login1.manage().window().maximize();
+ 	   System.out.println("logged in");
+ 	   Thread.sleep(1000);
+ 	   login1.manage().timeouts().implicitlyWait(70L, TimeUnit.SECONDS);
+ 	   
+}
+
+      catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	   catch(Exception e)
+	   {
+		   e.printStackTrace();
+	   }
+return login1; 
+   	    
+
+
+
+
+
+
+}
+	
+	public void createNostro (WebDriver wd)
+	{
+		try{
+			
+			Thread.sleep(3000);
+			wd.findElement(By.id("userMenu")).click();
+			wd.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+	        System.out.println("menu clicked");
+	        Thread.sleep(2000);
+	         wd.findElement(By.xpath("//a[@title='Nostro Monitoring']")).click();
+		       
+	        
+		       System.out.println("Clciked Nostro position");
+		       Thread.sleep(4000);
+		       
+		       WebElement webobject1 = wd.findElement(By.xpath("//a[@title='Nostro Position List']"));
+		       ((JavascriptExecutor) wd).executeScript("arguments[0].click();", webobject1);
+		      // wd.findElement(By.xpath("//a[@title='Nostro Position List']")).click();
+		       System.out.println("Nostro position clicked");
+	        
+		       
+		   	wd.switchTo().frame("panel2");
+		   	
+		    Thread.sleep(4000);
+		    
+			wd.findElement(By.id("MCB_SearchWC_wca_STATUS_RNGVAL-button")).click();
+			 System.out.println("drop down clicked");
+			 Thread.sleep(2000);
+			 wd.findElement(By.xpath("/html/body/form/div[2]/ul/li[6]/ul/li/div/div/div/ul/li[3]")).click();
+			 System.out.println("generated selected");
+			 
+			 wd.findElement(By.id("Search")).click();
+			 System.out.println("search clicked");
+			 Actions oAction = new Actions(wd);
+				WebElement ab= wd.findElement(By.xpath("html/body/form/span/fieldset/div[2]/table/tbody/tr/td[2]"));
+				oAction.moveToElement(ab);
+				oAction.contextClick(ab).build().perform();  /* this will perform right click */
+				System.out.println("right click is performed");	
+				Thread.sleep(5000);
+				wd.findElement(By.xpath("/html/body/form/div/div/ul/li/input")).click();
+				
+				System.out.println("create click is performed");
+				Thread.sleep(3000);
+			 	wd.switchTo().frame("panel3");
+			 	System.out.println("frame switched");	
+			 	wd.findElement(By.id("butName_1")).click();
+			 	
+			 	System.out.println("Get Positon clicked");	
+				
+		}	
+		
+	      catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		   catch(Exception e)
+		   {
+			   e.printStackTrace();
+		   }
+      
+		
+	}
+	
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+		Nostroposition BL = new Nostroposition();
+		
+		WebDriver WD2 = BL.login_screen("renukatm","verma5");
+		
+		BL.createNostro(WD2);
+	
+	}
+
+}

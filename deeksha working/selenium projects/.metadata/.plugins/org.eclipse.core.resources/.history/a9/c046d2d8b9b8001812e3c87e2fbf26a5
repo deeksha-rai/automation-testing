@@ -1,0 +1,13 @@
+package walletHubReviewCheck;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		BrowserSelection bs=new BrowserSelection();
+		
+		//Provide values in excel
+		bs.OpenBrowser("chrome");
+		bs.openUrl("https://wallethub.com/profile/test_insurance_company/");
+	}
+
+}

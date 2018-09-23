@@ -1,0 +1,19 @@
+package testScenarios;
+
+import Utilities.ConstantValues;
+import pagesOfWebsite.SignInToGmail;
+
+public class TS005 {
+	public static void ts005()throws Exception
+	{
+		SignInToGmail.openGmailSite(ConstantValues.GmaiUrl);
+		SignInToGmail.enterEmail("EmailOrPhone", ConstantValues.EmailOrPhone);
+		SignInToGmail.clickOnNextButton("NextButton");
+		Thread.sleep(2000);
+		SignInToGmail.enetrPassword("GmailPassword", ConstantValues.GmailPassword);
+		SignInToGmail.clickOnSubmitButton("submitgmail");
+		SignInToGmail.clickOnCompose("ComposeMail");
+		SignInToGmail.enterTo("To", ConstantValues.To);
+	}
+
+}

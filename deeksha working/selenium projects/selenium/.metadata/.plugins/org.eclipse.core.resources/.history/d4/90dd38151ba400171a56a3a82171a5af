@@ -1,0 +1,701 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.lang.String;
+
+import org.apache.xpath.operations.String;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class CreateRem_ALL_BTMU_India {
+	
+	static String RemId1,RemId2,RemId3,RemId4,RemId5,RemId6,RemId7,RemId8,RemId9,RemId10,RemId11,RemId12;
+	
+	
+	public static void Create_REM(){
+	
+
+	// TODO Auto-generated method stub
+	
+	DateFormat dateFormat = new SimpleDateFormat("mmss");
+    Date date = new Date();
+	java.lang.String amount = (dateFormat.format(date));
+	
+	
+	java.lang.String S = new String();
+	
+	{
+		
+		try{
+			
+		
+			
+			System.setProperty("webdriver.ie.driver", "C:\\Program Files\\Internet Explorer\\IEDriverServer.exe");
+	        WebDriver driver = new InternetExplorerDriver();
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driver.get("http://172.21.157.157:32000/Bancs/common/dologin.jsp?method=authMode&JSLoadingMode=null&status=null");
+			driver.manage().window().maximize();
+			driver.findElement(By.name("userId")).sendKeys("sahil");
+			driver.findElement(By.name("password")).sendKeys("sap2017");
+			driver.findElement(By.name("entity")).click();
+			Select drpdwn = new Select(driver.findElement(By.name("entity")));
+			drpdwn.selectByValue("GBTMUINDEL");
+			driver.findElement(By.id("Login")).submit();
+			
+			driver.findElement(By.id("spanPayments")).click();
+			driver.findElement(By.xpath("//span[@title='Credit Transfer']")).click();
+			driver.findElement(By.xpath("//p[@title='Outward Remittance']")).click();
+			driver.switchTo().frame("panel2");
+			
+			
+//1.)  Create REM LVP Unitary
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("568996");
+			//System.out.println("debit account entered");
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("LVP");
+			//System.out.println("LVP selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("1234");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");	
+			
+			Alert save1 = driver.switchTo().alert();
+			save1.accept();
+			
+			Thread.sleep(2000);
+			Alert remitance1 = driver.switchTo().alert();
+			
+			S=remitance1.getText();
+			
+			 RemId1 = S.substring(S.indexOf("-") + 2);
+			System.out.println("1.) *************************LVP rem id************************ " + RemId1);
+			remitance1.accept();
+			
+			
+			
+//2.)  Create REM RTGS Unitary
+			
+			
+			S = new String();
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+			//System.out.println("debit account entered");
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("RTGS");
+			//System.out.println("LVP selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("1234");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("35"+amount);
+			//System.out.println("Amount entered");
+			driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");		
+			Alert save2 = driver.switchTo().alert();
+			save2.accept();
+			Thread.sleep(2000);
+			Alert remitance2 = driver.switchTo().alert();
+			S=remitance2.getText();
+			RemId2 = S.substring(S.indexOf("-") + 2);
+			System.out.println("2.) *************************RTGS rem id************************ " + RemId2);
+			remitance2.accept();
+		
+
+			
+//3.)  Create REM LVP FL level
+			
+			
+			S = new String();
+			
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("File Level");;
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("LVP");
+			//System.out.println("LVP selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("1234");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);            //System.out.println("1st Amount entered");
+			
+			
+	        driver.findElement(By.id("butName_38")).click();	   //Click on save button	
+			Alert save3 = driver.switchTo().alert();
+			save3.accept();
+			Thread.sleep(3000);
+			Alert remitance3 = driver.switchTo().alert();			
+			remitance3.accept();					
+			
+			driver.findElement(By.id("butName_36")).click();		   // Click on insert button		
+			//2nd paymnt		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("12345");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);      //System.out.println("2nd Amount entered");
+			
+			
+	        driver.findElement(By.id("butName_38")).click();    //Click on save button
+	        Thread.sleep(3000);
+	        Alert save3a = driver.switchTo().alert();
+	        save3a.accept();
+			Thread.sleep(3000);
+			Alert remitance3a = driver.switchTo().alert();
+			S=remitance3a.getText();
+			RemId3 = S.substring(S.indexOf("-") + 2);
+			System.out.println("3.) ************************File level LVP order master id************************ " + RemId3);
+			remitance3a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem3a = driver.switchTo().alert();
+			rem3a.accept();
+			
+					
+			
+//4.)  Create REM LVP IPL level
+			
+			S = new String();
+			
+			
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("Individual Payment Level");;
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("LVP");
+			//System.out.println("LVP selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("123");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("1st Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();		
+			Alert save4 = driver.switchTo().alert();
+			save4.accept();
+			Thread.sleep(3000);
+			Alert remitance4 = driver.switchTo().alert();			
+			remitance4.accept();	
+			
+			// Click on insert button
+			driver.findElement(By.id("butName_36")).click();
+			
+			//2nd paymnt		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("123456");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save4a = driver.switchTo().alert();
+	        save4a.accept();
+			Thread.sleep(3000);
+			Alert remitance4a = driver.switchTo().alert();
+			S=remitance4a.getText();
+			RemId4 = S.substring(S.indexOf("-") + 2);
+			System.out.println("4.) ************************IP level LVP order master id************************ " + RemId4);
+			remitance4a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem4a = driver.switchTo().alert();
+			rem4a.accept();
+			
+			
+//5.)  Create REM RTGS File level
+			
+			S = new String();
+			
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("File Level");
+			WebElement aa = driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text"));
+			aa.click();
+			Thread.sleep(1000);
+			aa.sendKeys("RTGS");
+			//System.out.println("rtgs selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("1234");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("35"+amount);
+			//System.out.println("1st Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();		
+			Alert save5 = driver.switchTo().alert();
+			save5.accept();
+			Thread.sleep(3000);
+			Alert remitance5 = driver.switchTo().alert();			
+			remitance5.accept();	
+			
+			// Click on insert button
+			driver.findElement(By.id("butName_36")).click();
+			
+			//2nd paymnt		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("12345");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("35"+amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save5a = driver.switchTo().alert();
+	        save5a.accept();
+			Thread.sleep(3000);
+			Alert remitance5a = driver.switchTo().alert();
+			S=remitance5a.getText();
+			
+			
+			RemId5 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("5.) ************************File level RTGS order master id************************ " + RemId5);
+			
+			
+			remitance5a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	  //System.out.println("Save and close");
+			
+			Alert rem5a = driver.switchTo().alert();
+			
+			
+			rem5a.accept();
+			
+			
+			
+//06.) Create and auth IP Level RTGS
+			
+			S = new String();
+			
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("Individual Payment Level");
+			Thread.sleep(1000);
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("RTGS");
+			//System.out.println("LVP selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("123");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("35"+amount);
+			//System.out.println("1st Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();		
+			Alert save6 = driver.switchTo().alert();
+			save6.accept();
+			Thread.sleep(3000);
+			Alert remitance6 = driver.switchTo().alert();			
+			remitance6.accept();	
+			
+			// Click on insert button
+			driver.findElement(By.id("butName_36")).click();
+			
+			//2nd paymnt		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("123456");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys("35"+amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save6a = driver.switchTo().alert();
+	        save6a.accept();
+			Thread.sleep(3000);
+			Alert remitance6a = driver.switchTo().alert();
+			S=remitance6a.getText();
+			
+			
+			RemId6 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("6.) ************************IP level RTGS order master id************************ " + RemId6);
+			
+			
+			remitance6a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem6a = driver.switchTo().alert();
+			
+			
+			rem6a.accept();
+			
+			
+			
+			// Now Book Transfer cases
+			
+	
+			
+			
+//7.) Create and auth Book Transfer
+			
+			S = new String();
+			
+			
+			
+			Thread.sleep(1000);
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).click();
+			Thread.sleep(1000);
+			driver.switchTo().defaultContent();
+			driver.findElement(By.id("spanPayments")).click();
+			
+			
+			driver.findElement(By.xpath("//span[@title='Credit Transfer']")).click();
+			driver.findElement(By.xpath("//p[@title='Book Transfer']")).click();
+			driver.switchTo().frame("panel3");
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500381");
+			//System.out.println("debit account entered");
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("Book Transfer");
+			//System.out.println("Book Transfer selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500011");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");		
+			Alert save7a = driver.switchTo().alert();
+			save7a.accept();
+			Thread.sleep(3000);
+			Alert remitance7 = driver.switchTo().alert();
+			S=remitance7.getText();
+			
+			RemId7 = S.substring(S.indexOf("-") + 2);
+			System.out.println("7.) ************************Book Transfer Rem id************************ " + RemId7);
+			remitance7.accept();
+			
+			
+			
+		
+			
+			
+//08.) Create and auth Book_Transfer_IB
+			
+			S = new String();
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500381");
+			//System.out.println("debit account entered");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			WebElement clrngTyp = driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")); // clearing type id
+			clrngTyp.click(); // click on clearing type drop down
+			
+			// 2 b's input to select Book Transfer-Inter Branch
+			Thread.sleep(1000);
+			clrngTyp.sendKeys("b");
+			Thread.sleep(1000);
+			//clrngTyp.sendKeys("b");
+			//Thread.sleep(1000);
+
+			//System.out.println("BT-Inter Branch selected");
+			
+            Thread.sleep(2000);
+			
+			WebElement tt = driver.findElement(By.id("selectCombo_ct_ct_Beneficiary_wca_CR_IDNTFR_TYP_1_Text"));
+			
+			tt.click();
+			
+			Thread.sleep(1000);
+			
+			tt.sendKeys("M");
+			
+			Thread.sleep(1000);
+			
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("533122");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");		
+			Alert save = driver.switchTo().alert();
+			save.accept();
+			Thread.sleep(3000);
+			Alert remitance8 = driver.switchTo().alert();
+			S=remitance8.getText();
+			
+			RemId8 = S.substring(S.indexOf("-") + 2);
+			System.out.println("8.) ************************Book Transfer Inter Branch Rem id************************ " + RemId8);
+			remitance8.accept();
+			
+			
+			
+//9.) Create and auth File Level Book_Transfer_IB
+			
+			S = new String();
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500381");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("File Level");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			WebElement clrngTyp9 = driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")); // clearing type id
+			clrngTyp9.click(); // click on clearing type drop down
+			
+			// 2 b's input to select Book Transfer-Inter Branch   BookTransfer-InterBranch
+			Thread.sleep(1000);
+			//clrngTyp11.sendKeys("BookTransfer-InterBranch");
+			
+			
+			Thread.sleep(1000);
+			clrngTyp9.sendKeys("b");
+			Thread.sleep(1000);
+			clrngTyp9.sendKeys("b");
+			Thread.sleep(1000);
+			clrngTyp9.sendKeys("b");
+			
+			
+
+			//System.out.println("BT-Inter Branch selected");
+            Thread.sleep(2000);
+			
+			WebElement tt9 = driver.findElement(By.id("selectCombo_ct_ct_Beneficiary_wca_CR_IDNTFR_TYP_1_Text"));
+			
+			tt9.click();
+			
+			Thread.sleep(1000);
+			
+			tt9.sendKeys("M");
+			
+			Thread.sleep(1000);
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("533122");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			Thread.sleep(2000);		
+			
+	        driver.findElement(By.id("butName_38")).click();	//Click on save button	
+			Alert save9 = driver.switchTo().alert();
+			save9.accept();
+			Thread.sleep(2000);
+			Alert remitance9 = driver.switchTo().alert();			
+			remitance9.accept();	
+			
+			//2nd payment
+			driver.findElement(By.id("butName_36")).click();   // Click on insert button
+			Thread.sleep(2000);
+			tt9.click();
+			Thread.sleep(1000);
+			tt9.sendKeys("M");
+			Thread.sleep(1000);
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("533157");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(2000);
+	        Alert save9a = driver.switchTo().alert();
+			save9a.accept();
+			Thread.sleep(2000);
+			Alert remitance9a = driver.switchTo().alert();
+			S=remitance9a.getText();
+			
+			
+			
+			RemId9 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("9.) ************************Book Transfer- Inter Branch File Level Order id************************ " + RemId9);
+			
+			remitance9a.accept();
+			Thread.sleep(2000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem9a = driver.switchTo().alert();
+			rem9a.accept();
+			
+			
+			
+//10.) Create and auth IP Level Book_Transfer_IB
+			
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("503012");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("Individual Payment Level");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			WebElement clrngTyp10 = driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")); // clearing type id
+			clrngTyp10.click(); // click on clearing type drop down
+			
+			// 2 b's input to select Book Transfer-Inter Branch
+			Thread.sleep(1000);
+			clrngTyp10.sendKeys("b");
+			Thread.sleep(1000);
+			clrngTyp10.sendKeys("b");
+			Thread.sleep(1000);
+			//System.out.println("BT-Inter Branch selected");
+            Thread.sleep(2000);
+			WebElement tt10 = driver.findElement(By.id("selectCombo_ct_ct_Beneficiary_wca_CR_IDNTFR_TYP_1_Text"));
+			tt10.click();
+			Thread.sleep(1000);
+			tt10.sendKeys("M");
+			Thread.sleep(1000);
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("533122");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			Thread.sleep(2000);		
+	        driver.findElement(By.id("butName_38")).click();	//Click on save button	
+			Alert save10 = driver.switchTo().alert();
+			save10.accept();
+			Thread.sleep(3000);
+			Alert remitance10 = driver.switchTo().alert();			
+			remitance10.accept();	
+			//2nd payment
+			driver.findElement(By.id("butName_36")).click();   // Click on insert button	
+			Thread.sleep(2000);
+			tt10.click();
+			Thread.sleep(1000);
+			tt10.sendKeys("M");
+			Thread.sleep(1000);
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("533157");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save10a = driver.switchTo().alert();
+			save10a.accept();
+			Thread.sleep(3000);
+			Alert remitance10a = driver.switchTo().alert();
+			S=remitance10a.getText();
+			
+			
+			
+			RemId10 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("10.) ************************Book Transfer- Inter Branch IP Level Order id************************ " + RemId10);
+			
+			remitance10a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem10a = driver.switchTo().alert();
+			rem10a.accept();
+			
+			
+//11.) Create and auth File level BT
+			
+			S = new String();
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500381");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("File Level");;
+	        //driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("BookTransfer");
+	        
+			WebElement clrngTyp11 = driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")); // clearing type id
+			clrngTyp11.click(); // click on clearing type drop down
+			
+			// 2 b's input to select Book Transfer-Inter Branch
+			Thread.sleep(1000);
+			clrngTyp11.sendKeys("b");
+			Thread.sleep(1000);
+			clrngTyp11.sendKeys("b");
+			Thread.sleep(1000);
+	        
+			//System.out.println("BT selected");
+			//driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500022");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			Thread.sleep(2000);		
+			driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("BookTransfer");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500022");
+			
+	        driver.findElement(By.id("butName_38")).click();	//Click on save button	
+			Alert save11 = driver.switchTo().alert();
+			save11.accept();
+			Thread.sleep(3000);
+			Alert remitance11 = driver.switchTo().alert();			
+			remitance11.accept();	
+			
+			
+			driver.findElement(By.id("butName_36")).click();   // Click on insert button
+			
+			//2nd payment		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500110");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save11a = driver.switchTo().alert();
+	        save11a.accept();
+			Thread.sleep(3000);
+			Alert remitance11a = driver.switchTo().alert();
+			S=remitance11a.getText();
+			
+			
+			
+			RemId11 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("11.) ************************Book Transfer File Level Order id************************ " + RemId11);
+			
+			remitance11a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem11a = driver.switchTo().alert();
+			rem11a.accept();
+
+			
+			
+			
+//12.) Create and auth IP Level BT
+			
+			S = new String();
+			
+			
+			driver.findElement(By.id("ct_ct_Payments_wca_DR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500381");
+			//System.out.println("debit account entered");
+			driver.findElement(By.name("ct_ct_Payments_wca_REMIT_TYPE")).click();
+			driver.findElement(By.id("selectCombo_ct_ct_Payments_wca_SPLIT_MTHD_Text")).sendKeys("Individual Payment Level");
+	        driver.findElement(By.id("selectCombo_ct_ct_BeneficiaryDiscription_wca_CLR_TYP_Text")).sendKeys("BookTransfer");
+			//System.out.println("BT selected");
+			driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("500788");
+			driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("Amount entered");
+			Thread.sleep(2000);		
+			
+	        driver.findElement(By.id("butName_38")).click();	//Click on save button	
+			Alert save12 = driver.switchTo().alert();
+			save12.accept();
+			Thread.sleep(3000);
+			Alert remitance12 = driver.switchTo().alert();			
+			remitance12.accept();	
+			
+			
+			driver.findElement(By.id("butName_36")).click();   // Click on insert button
+			
+			//2nd payment		
+	        driver.findElement(By.name("ct_ct_Beneficiary_wca_CR_ACNT_IDNTFR")).findElement(By.tagName("input")).sendKeys("501470");
+	        driver.findElement(By.id("ct_ct_Beneficiary_wca_AMT")).findElement(By.tagName("input")).sendKeys(amount);
+			//System.out.println("2nd Amount entered");
+			//Click on save button
+	        driver.findElement(By.id("butName_38")).click();
+	        Thread.sleep(3000);
+	        Alert save12a = driver.switchTo().alert();
+	        save12a.accept();
+			Thread.sleep(3000);
+			Alert remitance12a = driver.switchTo().alert();
+			S=remitance12a.getText();
+			
+			
+			
+			RemId12 = S.substring(S.indexOf("-") + 2);
+			
+			System.out.println("12.) ************************Book Transfer IP Level Order id************************ " + RemId12);
+			
+			remitance12a.accept();
+			Thread.sleep(3000);
+	        driver.findElement(By.id("Save&Close50")).click();	
+			//System.out.println("Save and close");
+			Alert rem12a = driver.switchTo().alert();
+			rem12a.accept();
+							
+
+			}
+			catch(Exception e)
+			{}
+			
+	}
+	
+	
+	
+	
+	
+	}
+
+
+}

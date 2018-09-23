@@ -1,0 +1,21 @@
+propertyattribute = propertyvalues
+propertyattribute = locatortype:locatorvalue
+
+
+LoginUser=xpath://*[@id=\"viewport\"]/header/div/nav[3]/div[2]/a[1]
+userName=xpath://*[@id=\"join-login\"]/form/div[1]/input
+password=xpath://*[@id=\"join-login\"]/form/div[2]/input
+login=xpath://*[@id=\"join-login\"]/form/div[4]/button[2]
+stars=xpath://*[@id=\"wh-body-inner\"]/div[2]/div[3]/span
+third=xpath://div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][3]
+fifth=xpath://div[@class='wh-rating-choices-holder']/a[contains(@href,'#')][5]
+drpdown=xpath://*[@id=\"reviewform\"]/div[1]/div/div/span[2]/i
+health=xpath://*[@id=\"reviewform\"]/div[1]/div/ul/li[2]/a
+overallRate=xpath://*[@id="overallRating"]/a[3]
+review=id:review-content
+submit=cssSelector:input[type='submit']
+profile=xpath://*[@id=\"viewport\"]/header/div/nav[3]/div[1]/a[9]
+selectprfl=xpath://*[@id=\"m-user\"]/ul/li[1]/a
+viewReview=xpath://*[contains(@id,'activity-content')]/div[2]/a[2]
+compare=xpath://*[@id="reviews"]/div[3]/div[1]/div[1]/div[5]
+
